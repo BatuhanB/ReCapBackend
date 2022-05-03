@@ -1,0 +1,17 @@
+C:\Users\balib\source\repos\ReCapProject\Businness\bin\Debug\net5.0\Businness.deps.json
+C:\Users\balib\source\repos\ReCapProject\Businness\bin\Debug\net5.0\Businness.dll
+C:\Users\balib\source\repos\ReCapProject\Businness\bin\Debug\net5.0\Businness.pdb
+C:\Users\balib\source\repos\ReCapProject\Businness\bin\Debug\net5.0\DataAccess.dll
+C:\Users\balib\source\repos\ReCapProject\Businness\bin\Debug\net5.0\Entities.dll
+C:\Users\balib\source\repos\ReCapProject\Businness\bin\Debug\net5.0\DataAccess.pdb
+C:\Users\balib\source\repos\ReCapProject\Businness\bin\Debug\net5.0\Entities.pdb
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.csproj.AssemblyReference.cache
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.AssemblyInfoInputs.cache
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.AssemblyInfo.cs
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.csproj.CoreCompileInputs.cache
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.csproj.CopyComplete
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.dll
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\refint\Businness.dll
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.pdb
+C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\ref\Businness.dll
