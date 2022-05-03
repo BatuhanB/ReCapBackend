@@ -15,3 +15,5 @@ C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.dl
 C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\refint\Businness.dll
 C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\Businness.pdb
 C:\Users\balib\source\repos\ReCapProject\Businness\obj\Debug\net5.0\ref\Businness.dll
+C:\Users\balib\source\repos\ReCapProject\Businness\bin\Debug\net5.0\Core.dll
+C:\Users\balib\source\repos\ReCapProject\Businness\bin\Debug\net5.0\Core.pdb

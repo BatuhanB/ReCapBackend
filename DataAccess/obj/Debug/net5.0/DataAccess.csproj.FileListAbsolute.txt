@@ -16,3 +16,5 @@ C:\Users\balib\source\repos\ReCapProject\DataAccess\obj\Debug\net5.0\ref\DataAcc
 C:\Users\balib\source\repos\ReCapProject\DataAccess\bin\Debug\net5.0\DataAccess.runtimeconfig.json
 C:\Users\balib\source\repos\ReCapProject\DataAccess\bin\Debug\net5.0\DataAccess.runtimeconfig.dev.json
 C:\Users\balib\source\repos\ReCapProject\DataAccess\obj\Debug\net5.0\DataAccess.genruntimeconfig.cache
+C:\Users\balib\source\repos\ReCapProject\DataAccess\bin\Debug\net5.0\Core.dll
+C:\Users\balib\source\repos\ReCapProject\DataAccess\bin\Debug\net5.0\Core.pdb

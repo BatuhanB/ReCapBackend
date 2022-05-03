@@ -43,6 +43,9 @@ namespace DataAccess.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CarName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ColorId")
                         .HasColumnType("int");
 
