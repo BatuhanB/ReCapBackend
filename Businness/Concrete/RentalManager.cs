@@ -1,4 +1,5 @@
 ﻿using Businness.Abstract;
+using Businness.Constants;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -23,17 +24,17 @@ namespace Businness.Concrete
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
-            return new SuccessResult();
+            return new SuccessResult(Messages.RentalDeletedSuccess);
         }
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(),Messages.RentalListSuccess);
         }
 
         public IDataResult<Rental> GetById(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.GetById(x=>x.Id == id));
+            return new SuccessDataResult<Rental>(_rentalDal.GetById(x=>x.Id == id),Messages.RentalListByIdSuccess);
         }
 
         public IResult Insert(Rental rental)
@@ -41,15 +42,15 @@ namespace Businness.Concrete
             if(rental.ReturnDate != null)
             {
                 _rentalDal.Add(rental);
-                return new SuccessResult("Araba kiralama başarılı!");
+                return new SuccessResult(Messages.RentalAddedSuccess);
             }
-            return new ErrorResult("Araba henüz teslim edilmemiştir.");
+            return new ErrorResult(Messages.RentalAddedFailure);
         }
 
         public IResult Update(Rental rental)
         {
             _rentalDal.Delete(rental);
-            return new SuccessResult();
+            return new SuccessResult(Messages.RentalUpdatedSuccess);
         }
     }
 }

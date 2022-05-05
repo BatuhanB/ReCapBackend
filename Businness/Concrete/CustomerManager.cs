@@ -1,4 +1,5 @@
 ﻿using Businness.Abstract;
+using Businness.Constants;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -23,29 +24,29 @@ namespace Businness.Concrete
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CustomerDeletedSuccess);
         }
 
         public IDataResult<List<Customer>> GetAll()
         {
-            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll());
+            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(),Messages.CustomerListSuccess);
         }
 
         public IDataResult<Customer> GetById(int id)
         {
-            return new SuccessDataResult<Customer>(_customerDal.GetById(x=>x.UserId == id));
+            return new SuccessDataResult<Customer>(_customerDal.GetById(x=>x.UserId == id),Messages.CustomerListByIdSuccess);
         }
 
         public IResult Insert(Customer customer)
         {
             _customerDal.Add(customer);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CustomerAddedSuccess);
         }
 
         public IResult Update(Customer customer)
         {
             _customerDal.Update(customer);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CustomerUpdatedSuccess);
         }
     }
 }

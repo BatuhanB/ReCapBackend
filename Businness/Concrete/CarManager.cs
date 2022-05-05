@@ -1,4 +1,5 @@
 ﻿using Businness.Abstract;
+using Businness.Constants;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -18,7 +19,7 @@ namespace Businness.Concrete
 
         public CarManager(ICarDal carDal)
         {
-            this._carDal = carDal;
+            _carDal = carDal;
         }
 
         public IResult Insert(Car car)
@@ -26,58 +27,49 @@ namespace Businness.Concrete
             if (car.CarName.Length >= 2 && car.DailyPrice > 0)
             {
                 _carDal.Add(car);
-                return new SuccessResult("Ben oldum hocam!");
+                return new SuccessResult(Messages.CarAddedSuccess);
             }
             else
             {
-                return new ErrorResult("Başaramadık abi!");
-                //if (car.CarName.Length < 2)
-                //{
-                //    Console.WriteLine("Araba açıklaması 2 karakterden az olamaz.");
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Araba günlük kiralama bedeli 0'dan büyük olmalıdır.");
-                //}
+                return new ErrorResult(Messages.CarAddedFailure);
             }
-
         }
 
         public IDataResult<List<Car>> GetAll()
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarListSuccess);
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.BrandId == id));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.BrandId == id),Messages.CarListByBrandSuccess);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.ColorId == id));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.ColorId == id),Messages.CarListByColorSuccess);
         }
 
         public IDataResult<Car> GetById(int id)
         {
-            return new SuccessDataResult<Car>(_carDal.GetById(x => x.Id == id));
+            return new SuccessDataResult<Car>(_carDal.GetById(x => x.Id == id),Messages.CarListByIdSuccess);
         }
 
         public IResult Update(Car car)
         {
             _carDal.Update(car);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CarUpdatedSuccess);
         }
 
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CarDeletedSuccess);
         }
 
         public IDataResult<List<CarDetailsDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetils());
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetils(),Messages.CarListSuccess);
         }
     }
 }
