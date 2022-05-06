@@ -52,7 +52,7 @@ namespace Businness.Constants
 
         //RentalManager messages
         public static string RentalAddedSuccess = "Rental add has been successful";
-        public static string RentalAddedFailure = "Rental add has not been successful - Car has not been returned yet.";
+        public static string RentalAddedFailure = "Rental add has not been successful";
         public static string RentalUpdatedSuccess = "Rental update has been successful";
         public static string RentalUpdatedFailure = "Rental update has not been successful";
         public static string RentalDeletedSuccess = "Rental delete has been successful";

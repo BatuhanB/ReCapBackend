@@ -1,5 +1,7 @@
 ﻿using Businness.Abstract;
 using Businness.Constants;
+using Businness.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -21,6 +23,7 @@ namespace Businness.Concrete
             _brandDal = brandDal;
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
@@ -37,12 +40,14 @@ namespace Businness.Concrete
             return new SuccessDataResult<Brand>(_brandDal.GetById(x => x.Id == id),Messages.BrandListByIdSuccess);
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Insert(Brand brand)
         {
             _brandDal.Add(brand);
             return new SuccessResult(Messages.BrandAddedSuccess);
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);

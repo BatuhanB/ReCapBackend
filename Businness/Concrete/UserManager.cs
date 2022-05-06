@@ -1,5 +1,7 @@
 ﻿using Businness.Abstract;
 using Businness.Constants;
+using Businness.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -20,6 +22,7 @@ namespace Businness.Concrete
         {
             this._userDal = userDal;
         }
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Delete(User user)
         {
             _userDal.Delete(user);

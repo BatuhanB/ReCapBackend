@@ -32,18 +32,18 @@ namespace WebAPI
         {
 
             services.AddControllers();
-            services.AddSingleton<ICarService, CarManager>();//Car controller injection chains
-            services.AddSingleton<ICarDal, EfCarDal>();
-            services.AddSingleton<IBrandService, BrandManager>();//Brand controller injection chains
-            services.AddSingleton<IBrandDal, EfBrandDal>();
-            services.AddSingleton<IColorService, ColorManager>();//Color controller injection chains
-            services.AddSingleton<IColorDal, EfColorDal>();
-            services.AddSingleton<ICustomerService, CustomerManager>();//Customer controller injection chains
-            services.AddSingleton<ICustomerDal, EfCustomerDal>();
-            services.AddSingleton<IRentalService, RentalManager>();//Rental controller injection chains
-            services.AddSingleton<IRentalDal, EfRentalDal>();
-            services.AddSingleton<IUserService, UserManager>();//User controller injection chains
-            services.AddSingleton<IUserDal, EfUserDal>();
+            //services.AddSingleton<ICarService, CarManager>();//Car controller injection chains
+            //services.AddSingleton<ICarDal, EfCarDal>();
+            //services.AddSingleton<IBrandService, BrandManager>();//Brand controller injection chains
+            //services.AddSingleton<IBrandDal, EfBrandDal>();
+            //services.AddSingleton<IColorService, ColorManager>();//Color controller injection chains
+            //services.AddSingleton<IColorDal, EfColorDal>();
+            //services.AddSingleton<ICustomerService, CustomerManager>();//Customer controller injection chains
+            //services.AddSingleton<ICustomerDal, EfCustomerDal>();
+            //services.AddSingleton<IRentalService, RentalManager>();//Rental controller injection chains
+            //services.AddSingleton<IRentalDal, EfRentalDal>();
+            //services.AddSingleton<IUserService, UserManager>();//User controller injection chains
+            //services.AddSingleton<IUserDal, EfUserDal>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });

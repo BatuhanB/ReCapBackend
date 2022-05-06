@@ -1,5 +1,7 @@
 ﻿using Businness.Abstract;
 using Businness.Constants;
+using Businness.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -21,6 +23,7 @@ namespace Businness.Concrete
             _rentalDal = rentalDal;
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
@@ -37,16 +40,14 @@ namespace Businness.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.GetById(x=>x.Id == id),Messages.RentalListByIdSuccess);
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Insert(Rental rental)
         {
-            if(rental.ReturnDate != null)
-            {
                 _rentalDal.Add(rental);
                 return new SuccessResult(Messages.RentalAddedSuccess);
-            }
-            return new ErrorResult(Messages.RentalAddedFailure);
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)
         {
             _rentalDal.Delete(rental);
