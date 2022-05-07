@@ -72,6 +72,7 @@ namespace Businness.Constants
         public static string UserListSuccess = "User listing has been successful";
         public static string UserListByIdSuccess = "User listing by id has been successful";
 
-        
+        //CarImageManager messages
+        public static string CarImageLimit = "Car image is over 5 ";
     }
 }
