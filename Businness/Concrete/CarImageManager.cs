@@ -25,7 +25,7 @@ namespace Businness.Concrete
         {
             _carImageDal = carImageDal;
         }
-        [ValidationAspect(typeof(CarImageValidator))]
+        //[ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file, CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckImageCount(carImage.CarId));
@@ -34,9 +34,9 @@ namespace Businness.Concrete
                 return result;
             }
             var imageResult = FileHelper.Upload(file);
-            if (imageResult != null)
+            if (!imageResult.IsSuccess)
             {
-                return imageResult;
+                return new ErrorResult("");
             }
             carImage.ImagePath = imageResult.Message;
             carImage.Date = DateTime.Now;
@@ -46,8 +46,8 @@ namespace Businness.Concrete
 
         public IResult Delete(CarImage carImage)
         {
-            var result = _carImageDal.GetById(x=>x.Id == carImage.Id);
-            if(result == null)
+            var result = _carImageDal.GetById(x => x.Id == carImage.Id);
+            if (result == null)
             {
                 return new ErrorResult("Image not found");
             }
@@ -58,12 +58,12 @@ namespace Businness.Concrete
 
         public IDataResult<List<CarImage>> GetAll()
         {
-           return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
         }
 
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            var updatedFile = FileHelper.Update(file,carImage.ImagePath);
+            var updatedFile = FileHelper.Update(file, carImage.ImagePath);
             if (!updatedFile.IsSuccess)
             {
                 return new ErrorResult(updatedFile.Message);

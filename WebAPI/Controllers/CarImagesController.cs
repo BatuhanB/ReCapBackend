@@ -29,19 +29,20 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile file, [FromForm] CarImage carImage)
+        public IActionResult Add([FromForm] CarImage carImage)
         {
-            var result = _carImageService.Add(file,carImage);
+            var result = _carImageService.Add(carImage.File, carImage);
             if (result.IsSuccess)
             {
                 return Ok(result);
             }
             return BadRequest(result);
+
         }
         [HttpPut("update")]
-        public IActionResult Update([FromForm] IFormFile file, [FromForm] CarImage carImage)
+        public IActionResult Update( [FromForm] CarImage carImage)
         {
-            var result = _carImageService.Update(file,carImage);
+            var result = _carImageService.Update(carImage.File, carImage);
             if (result.IsSuccess)
             {
                 return Ok(result);
