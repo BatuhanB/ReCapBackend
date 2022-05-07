@@ -2,6 +2,7 @@
 using Businness.Constants;
 using Businness.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -43,6 +44,11 @@ namespace Businness.Concrete
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Insert(Color color)
         {
+            var result = BusinessRules.Run(CheckIfColorNameExists(color.Name));
+            if (result != null)
+            {
+                return result;
+            }
             _colorDal.Add(color);
             return new SuccessResult(Messages.ColorAddedSuccess);
         }
@@ -50,8 +56,22 @@ namespace Businness.Concrete
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {
+            var result = BusinessRules.Run(CheckIfColorNameExists(color.Name));
+            if (result != null)
+            {
+                return result;
+            }
             _colorDal.Update(color);
             return new SuccessResult(Messages.ColorUpdatedSuccess);
+        }
+        private IResult CheckIfColorNameExists(string colorName)
+        {
+            var result = _colorDal.GetAll(x => x.Name == colorName).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.ColorNameExists);
+            }
+            return new SuccessResult();
         }
     }
 }

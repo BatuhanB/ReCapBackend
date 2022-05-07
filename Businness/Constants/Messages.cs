@@ -29,6 +29,7 @@ namespace Businness.Constants
         public static string BrandDeletedFailure = "Brand delete has not been successful";
         public static string BrandListSuccess = "Brand listing has been successful";
         public static string BrandListByIdSuccess = "Brand listing by id has been successful";
+        public static string BrandNameExists = "BrandName already exists.";
 
         //ColorManager messages
         public static string ColorAddedSuccess = "Color add has been successful";
@@ -39,6 +40,7 @@ namespace Businness.Constants
         public static string ColorDeletedFailure = "Color delete has not been successful";
         public static string ColorListSuccess = "Color listing has been successful";
         public static string ColorListByIdSuccess = "Color listing by id has been successful";
+        public static string ColorNameExists = "ColorName already exists.";
 
         //CustomerManager messages
         public static string CustomerAddedSuccess = "Customer add has been successful";
@@ -69,5 +71,7 @@ namespace Businness.Constants
         public static string UserDeletedFailure = "User delete has not been successful";
         public static string UserListSuccess = "User listing has been successful";
         public static string UserListByIdSuccess = "User listing by id has been successful";
+
+        
     }
 }

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Businness.DependencyResolvers.Autofac
 {
-    public class AutofacBusinessModeule : Module
+    public class AutofacBusinessModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
