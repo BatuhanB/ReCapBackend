@@ -1,4 +1,5 @@
 ﻿using Businness.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -19,7 +20,7 @@ namespace ConsoleUI
             //UserListTest();       //---> Çalışıyor.
             //CustomerAddTest();   //---> Çalışıyor.
             //CustomerListTest(); //---> Çalışıyor.
-            RentalAddTest();   //---> Çalışıyor.
+            //RentalAddTest();   //---> Çalışıyor.
             //RentalListTest(); //---> Çalışıyor.
         }
 

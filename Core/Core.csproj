@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <Folder Include="Utilities\Helpers\FileHelper\Abstract\" />
+    <Folder Include="Utilities\Security\Encryption\" />
+    <Folder Include="Utilities\Security\Jwt\" />
   </ItemGroup>
 
 </Project>
