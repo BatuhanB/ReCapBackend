@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -78,5 +79,10 @@ namespace Businness.Constants
 
         public static string AuthorizationDenied = "Invalid authorization detected!";
         internal static string UserAlreadyExists = "User is already exists!";
+        internal static string UserNotFound = "User not found!";
+        internal static string WrongPassword = "User password is not correct!";
+        internal static string SuccessLogin = "User has been logged in successfully!";
+        internal static string TokenCreated = "Token has been created successfully!";
+        internal static string SuccessUserRegister = "User has been registered successfully!";
     }
 }

@@ -3,6 +3,7 @@ using Businness.Constants;
 using Core.Entities.Concrete;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
+using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.Jwt;
 using Entities.DTOs;
 using System;
@@ -26,17 +27,40 @@ namespace Businness.Concrete
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
-            throw new NotImplementedException();
+            var claims = _userService.GetClaims(user);
+            var accessToken = _tokenHelper.CreateToken(user, claims.Data);
+            return new SuccessDataResult<AccessToken>(accessToken,Messages.TokenCreated);
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
-            throw new NotImplementedException();
+            var userToCheck = _userService.GetByMail(userForLoginDto.Email);
+            if (userToCheck == null)
+            {
+                return new ErrorDataResult<User>(Messages.UserNotFound);
+            }
+            if (!HashingHelper.VerifiedPasswordHash(userForLoginDto.Password,userToCheck.Data.PasswordHash,userToCheck.Data.PasswordSalt))
+            {
+                return new ErrorDataResult<User>(Messages.WrongPassword);
+            }
+            return new SuccessDataResult<User>(userToCheck.Data, Messages.SuccessLogin);
         }
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
-            throw new NotImplementedException();
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(password,out passwordHash,out passwordSalt);
+            var user = new User
+            {
+                Email = userForRegisterDto.Email,
+                FirstName = userForRegisterDto.FirstName,
+                LastName = userForRegisterDto.LastName,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = true
+            };
+            _userService.Insert(user);
+            return new SuccessDataResult<User>(user,Messages.SuccessUserRegister);
         }
 
         public IResult UserExists(string email)

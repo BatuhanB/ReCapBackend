@@ -74,3 +74,6 @@ C:\Users\balib\source\repos\ReCapProject\WebAPI\bin\Debug\net5.0\Microsoft.Entit
 C:\Users\balib\source\repos\ReCapProject\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\balib\source\repos\ReCapProject\WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\balib\source\repos\ReCapProject\WebAPI\bin\Debug\net5.0\System.IO.Pipelines.dll
+C:\Users\balib\source\repos\ReCapProject\WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\balib\source\repos\ReCapProject\WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\balib\source\repos\ReCapProject\WebAPI\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
