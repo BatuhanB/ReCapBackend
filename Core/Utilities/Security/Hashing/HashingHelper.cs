@@ -28,4 +28,4 @@ namespace Core.Utilities.Security.Hashing
             return true;
         }
     }
-}//1:29'da kaldim
+}

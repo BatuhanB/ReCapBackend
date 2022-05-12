@@ -1,4 +1,5 @@
 ﻿using Businness.Abstract;
+using Businness.BusinessAspects.Autofac;
 using Businness.Constants;
 using Businness.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -24,6 +25,7 @@ namespace Businness.Concrete
             _carDal = carDal;
         }
 
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Insert(Car car)
         {

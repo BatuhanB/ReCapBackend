@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -74,5 +75,8 @@ namespace Businness.Constants
 
         //CarImageManager messages
         public static string CarImageLimit = "Car image is over 5 ";
+
+        public static string AuthorizationDenied = "Invalid authorization detected!";
+        internal static string UserAlreadyExists = "User is already exists!";
     }
 }

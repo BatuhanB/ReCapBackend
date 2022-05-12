@@ -20,7 +20,7 @@ namespace Businness.Concrete
 
         public UserManager(IUserDal userDal)
         {
-            this._userDal = userDal;
+           _userDal = userDal;
         }
         [ValidationAspect(typeof(UserValidator))]
         public IResult Delete(User user)
