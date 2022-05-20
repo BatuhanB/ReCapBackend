@@ -2,7 +2,9 @@
 using Businness.BusinessAspects.Autofac;
 using Businness.Constants;
 using Businness.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Performance;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -25,6 +27,8 @@ namespace Businness.Concrete
             _carDal = carDal;
         }
 
+        [PerformanceAspect(5)]
+        [CacheRemoveAspect("ICarService.Get")]
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Insert(Car car)
@@ -33,26 +37,36 @@ namespace Businness.Concrete
             return new SuccessResult(Messages.CarAddedSuccess);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListSuccess);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.BrandId == id), Messages.CarListByBrandSuccess);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.ColorId == id), Messages.CarListByColorSuccess);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<Car> GetById(int id)
         {
             return new SuccessDataResult<Car>(_carDal.GetById(x => x.Id == id), Messages.CarListByIdSuccess);
         }
 
+        [PerformanceAspect(5)]
+        [CacheRemoveAspect("ICarService.Get")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
@@ -60,6 +74,7 @@ namespace Businness.Concrete
             return new SuccessResult(Messages.CarUpdatedSuccess);
         }
 
+        [PerformanceAspect(5)]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Delete(Car car)
         {
@@ -67,6 +82,8 @@ namespace Businness.Concrete
             return new SuccessResult(Messages.CarDeletedSuccess);
         }
 
+        [PerformanceAspect(5)]
+        [CacheAspect]
         public IDataResult<List<CarDetailsDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetils(), Messages.CarListSuccess);
