@@ -1,7 +1,10 @@
 ﻿using Businness.Abstract;
+using Businness.BusinessAspects.Autofac;
 using Businness.Constants;
 using Businness.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Performance;
 using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -24,23 +27,33 @@ namespace Businness.Concrete
             _brandDal = brandDal;
         }
 
+        [SecuredOperation("brand.delete,admin")]
+        [CacheRemoveAspect("IBrandService.Get")]
         [ValidationAspect(typeof(BrandValidator))]
+        [PerformanceAspect(5)]
         public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
             return new SuccessResult(Messages.BrandDeletedSuccess);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<List<Brand>> GetAll()
         {
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),Messages.BrandListSuccess);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<Brand> GetById(int id)
         {
             return new SuccessDataResult<Brand>(_brandDal.GetById(x => x.Id == id),Messages.BrandListByIdSuccess);
         }
 
+        [PerformanceAspect(5)]
+        [SecuredOperation("brand.insert,admin")]
+        [CacheRemoveAspect("IBrandService.Get")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Insert(Brand brand)
         {
@@ -53,6 +66,8 @@ namespace Businness.Concrete
             return new SuccessResult(Messages.BrandAddedSuccess);
         }
 
+        [SecuredOperation("brand.update,admin")]
+        [CacheRemoveAspect("IBrandService.Get")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
         {

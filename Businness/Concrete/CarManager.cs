@@ -65,7 +65,7 @@ namespace Businness.Concrete
             return new SuccessDataResult<Car>(_carDal.GetById(x => x.Id == id), Messages.CarListByIdSuccess);
         }
 
-        [PerformanceAspect(5)]
+        [SecuredOperation("car.update,admin")]
         [CacheRemoveAspect("ICarService.Get")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
@@ -75,6 +75,8 @@ namespace Businness.Concrete
         }
 
         [PerformanceAspect(5)]
+        [CacheRemoveAspect("ICarService.Get")]
+        [SecuredOperation("car.delete,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Delete(Car car)
         {
