@@ -24,12 +24,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<CarImage> CarImages { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<Customer>().ToTable("Customers");
-            base.OnModelCreating(modelBuilder);
-        }
         
     }
 }

@@ -27,7 +27,6 @@ namespace Businness.Concrete
         }
 
         [ValidationAspect(typeof(CustomerValidator))]
-        [SecuredOperation("customer.delete,admin")]
         [CacheRemoveAspect("ICustomerService.Get")]
         [PerformanceAspect(5)]
         public IResult Delete(Customer customer)
@@ -52,7 +51,6 @@ namespace Businness.Concrete
 
         [PerformanceAspect(5)]
         [CacheRemoveAspect("ICustomerService.Get")]
-        [SecuredOperation("customer.insert,admin")]
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Insert(Customer customer)
         {
@@ -61,7 +59,6 @@ namespace Businness.Concrete
         }
 
         [CacheRemoveAspect("ICustomerService.Get")]
-        [SecuredOperation("customer.update,admin")]
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Update(Customer customer)
         {

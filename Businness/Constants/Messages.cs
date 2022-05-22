@@ -84,5 +84,6 @@ namespace Businness.Constants
         internal static string SuccessLogin = "User has been logged in successfully!";
         internal static string TokenCreated = "Token has been created successfully!";
         internal static string SuccessUserRegister = "User has been registered successfully!";
+        internal static string RentalDetailsListed = "Rental details has been listed successfully!";
     }
 }

@@ -9,6 +9,7 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,6 @@ namespace Businness.Concrete
         }
 
         [ValidationAspect(typeof(RentalValidator))]
-        [SecuredOperation("rental.delete,admin")]
         [CacheRemoveAspect("IRentalService.Get")]
         [PerformanceAspect(5)]
         public IResult Delete(Rental rental)
@@ -50,8 +50,14 @@ namespace Businness.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.GetById(x=>x.Id == id),Messages.RentalListByIdSuccess);
         }
 
+        [PerformanceAspect(5)]
+        [CacheAspect]
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(),Messages.RentalDetailsListed);
+        }
+
         [ValidationAspect(typeof(RentalValidator))]
-        [SecuredOperation("rental.insert,admin")]
         [CacheRemoveAspect("IRentalService.Get")]
         [PerformanceAspect(5)]
         public IResult Insert(Rental rental)
@@ -61,7 +67,6 @@ namespace Businness.Concrete
         }
 
         [ValidationAspect(typeof(RentalValidator))]
-        [SecuredOperation("rental.update,admin")]
         [CacheRemoveAspect("IRentalService.Get")]
         public IResult Update(Rental rental)
         {
