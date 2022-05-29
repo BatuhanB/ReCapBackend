@@ -86,9 +86,9 @@ namespace Businness.Concrete
 
         [PerformanceAspect(5)]
         [CacheAspect]
-        public IDataResult<List<CarDetailsDto>> GetCarDetails()
+        public IDataResult<List<CarDetailsDto>> GetCarDetails(int id)
         {
-            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetils(), Messages.CarListSuccess);
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails(x=>x.CarId == id), Messages.CarListSuccess);
         }
     }
 }
