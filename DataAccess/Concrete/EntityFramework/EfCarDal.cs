@@ -28,6 +28,9 @@ namespace DataAccess.Concrete.EntityFramework
                              BrandName = b.Name,
                              ColorName = co.Name,
                              DailyPrice = c.DailyPrice,
+                             Description = c.Description,
+                             ModelYear = c.ModelYear,
+                             CarImages =(from i in context.CarImages where i.CarId == c.Id select i).ToList(),
                          };
             return result.ToList();
         }
