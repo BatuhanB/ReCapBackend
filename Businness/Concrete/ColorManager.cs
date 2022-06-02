@@ -29,7 +29,7 @@ namespace Businness.Concrete
 
         [ValidationAspect(typeof(ColorValidator))]
         [CacheRemoveAspect("IColorService.Get")]
-        [SecuredOperation("color.delete,admin")]
+        //[SecuredOperation("color.delete,admin")]
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
@@ -52,7 +52,7 @@ namespace Businness.Concrete
 
         [ValidationAspect(typeof(ColorValidator))]
         [CacheRemoveAspect("IColorService.Get")]
-        [SecuredOperation("color.insert,admin")]
+        //[SecuredOperation("color.insert,admin")]
         [PerformanceAspect(5)]
         public IResult Insert(Color color)
         {
@@ -67,7 +67,7 @@ namespace Businness.Concrete
 
         [ValidationAspect(typeof(ColorValidator))]
         [CacheRemoveAspect("IColorService.Get")]
-        [SecuredOperation("color.update,admin")]
+        //[SecuredOperation("color.update,admin")]
         [PerformanceAspect(5)]
         public IResult Update(Color color)
         {

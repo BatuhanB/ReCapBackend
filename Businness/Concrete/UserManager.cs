@@ -28,7 +28,7 @@ namespace Businness.Concrete
 
         [ValidationAspect(typeof(UserValidator))]
         [PerformanceAspect(5)]
-        [SecuredOperation("customer.delete,admin")]
+        //[SecuredOperation("customer.delete,admin")]
         [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Delete(User user)
         {
@@ -66,7 +66,7 @@ namespace Businness.Concrete
 
         [ValidationAspect(typeof(UserValidator))]
         [PerformanceAspect(5)]
-        [SecuredOperation("customer.insert,admin")]
+        //[SecuredOperation("customer.insert,admin")]
         [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Insert(User user)
         {
@@ -75,7 +75,7 @@ namespace Businness.Concrete
         }
 
         [ValidationAspect(typeof(UserValidator))]
-        [SecuredOperation("customer.update,admin")]
+        //[SecuredOperation("customer.update,admin")]
         [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Update(User user)
         {

@@ -27,7 +27,7 @@ namespace Businness.Concrete
             _brandDal = brandDal;
         }
 
-        [SecuredOperation("brand.delete,admin")]
+        //[SecuredOperation("brand.delete,admin")]
         [CacheRemoveAspect("IBrandService.Get")]
         [ValidationAspect(typeof(BrandValidator))]
         [PerformanceAspect(5)]
@@ -52,7 +52,7 @@ namespace Businness.Concrete
         }
 
         [PerformanceAspect(5)]
-        [SecuredOperation("brand.insert,admin")]
+        //[SecuredOperation("brand.insert,admin")]
         [CacheRemoveAspect("IBrandService.Get")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Insert(Brand brand)
@@ -66,7 +66,7 @@ namespace Businness.Concrete
             return new SuccessResult(Messages.BrandAddedSuccess);
         }
 
-        [SecuredOperation("brand.update,admin")]
+        //[SecuredOperation("brand.update,admin")]
         [CacheRemoveAspect("IBrandService.Get")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
