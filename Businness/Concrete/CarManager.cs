@@ -90,5 +90,10 @@ namespace Businness.Concrete
         {
             return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails(x=>x.CarId == id), Messages.CarListSuccess);
         }
+
+        public IDataResult<List<CarDetailsDto>> GetCarDetail()
+        {
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetail(),Messages.CarListSuccess);
+        }
     }
 }
