@@ -23,13 +23,15 @@ namespace DataAccess.Concrete.EntityFramework
                          select new CarDetailsDto()
                          {
                              CarId = c.Id,
+                             BrandId = b.Id,
+                             ColorId = co.Id,
                              CarName = c.CarName,
                              BrandName = b.Name,
                              ColorName = co.Name,
                              DailyPrice = c.DailyPrice,
                              Description = c.Description,
                              ModelYear = c.ModelYear,
-                             CarImages =(from i in context.CarImages where i.CarId == c.Id select i).ToList(),
+                             CarImages = (from i in context.CarImages where i.CarId == c.Id select i).ToList(),
                          };
             return filter == null ? result.ToList() : result.Where(filter).ToList();
         }
@@ -42,7 +44,9 @@ namespace DataAccess.Concrete.EntityFramework
                          select new CarDetailsDto()
                          {
                              CarId = c.Id,
-                             BrandName= b.Name,
+                             BrandId = b.Id,
+                             ColorId = co.Id,
+                             BrandName = b.Name,
                              CarName = c.CarName,
                              ColorName = co.Name,
                              DailyPrice = c.DailyPrice,

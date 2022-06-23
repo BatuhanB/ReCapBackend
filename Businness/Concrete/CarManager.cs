@@ -46,16 +46,32 @@ namespace Businness.Concrete
 
         [CacheAspect]
         [PerformanceAspect(5)]
-        public IDataResult<List<Car>> GetCarsByBrandId(int id)
+        public IDataResult<List<CarDetailsDto>> GetCarsByBrandId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.BrandId == id), Messages.CarListByBrandSuccess);
+            List<CarDetailsDto> carDetail = _carDal.GetCarDetails(x => x.BrandId == id);
+            if (carDetail == null)
+            {
+                return new ErrorDataResult<List<CarDetailsDto>>("");
+            }
+            else
+            {
+                return new SuccessDataResult<List<CarDetailsDto>>(carDetail, Messages.CarListByBrandSuccess);
+            }
         }
 
         [CacheAspect]
         [PerformanceAspect(5)]
-        public IDataResult<List<Car>> GetCarsByColorId(int id)
+        public IDataResult<List<CarDetailsDto>> GetCarsByColorId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.ColorId == id), Messages.CarListByColorSuccess);
+            List<CarDetailsDto> carDetail = _carDal.GetCarDetails(x => x.ColorId == id);
+            if (carDetail == null)
+            {
+                return new ErrorDataResult<List<CarDetailsDto>>("");
+            }
+            else
+            {
+                return new SuccessDataResult<List<CarDetailsDto>>(carDetail, Messages.CarListByColorSuccess);
+            }
         }
 
         [CacheAspect]
@@ -88,12 +104,12 @@ namespace Businness.Concrete
         [CacheAspect]
         public IDataResult<List<CarDetailsDto>> GetCarDetails(int id)
         {
-            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails(x=>x.CarId == id), Messages.CarListSuccess);
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails(x => x.CarId == id), Messages.CarListSuccess);
         }
 
         public IDataResult<List<CarDetailsDto>> GetCarDetail()
         {
-            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetail(),Messages.CarListSuccess);
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetail(), Messages.CarListSuccess);
         }
     }
 }
