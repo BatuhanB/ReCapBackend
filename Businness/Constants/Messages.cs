@@ -21,6 +21,7 @@ namespace Businness.Constants
         public static string CarListByBrandSuccess = "Car listing by brand has been successful";
         public static string CarListByColorSuccess = "Car listing by color has been successful";
         public static string CarListByIdSuccess = "Car listing by car id has been successful";
+        internal static string CarBrandAndColorSuccess = "Car listing by brand id and color id has been successfull";
 
         //BrandManager messages
         public static string BrandAddedSuccess = "Brand add has been successful";
@@ -85,5 +86,6 @@ namespace Businness.Constants
         internal static string TokenCreated = "Token has been created successfully!";
         internal static string SuccessUserRegister = "User has been registered successfully!";
         internal static string RentalDetailsListed = "Rental details has been listed successfully!";
+        
     }
 }

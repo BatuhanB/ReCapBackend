@@ -111,5 +111,18 @@ namespace Businness.Concrete
         {
             return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetail(), Messages.CarListSuccess);
         }
+
+        public IDataResult<List<CarDetailsDto>> GetCarByColorIdAndBrandId(int colorId, int brandId)
+        {
+            List<CarDetailsDto> carDetails = _carDal.GetCarDetails(x => x.ColorId == colorId && x.BrandId == brandId);
+            if (carDetails == null)
+            {
+                return new  ErrorDataResult<List<CarDetailsDto>>("There is no car found for the values you entered ");
+            }
+            else
+            {
+                return new SuccessDataResult<List<CarDetailsDto>>(carDetails, Messages.CarBrandAndColorSuccess);
+            }
+        }
     }
 }
