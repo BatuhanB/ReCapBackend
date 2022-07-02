@@ -5,6 +5,7 @@ using Businness.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Performance;
+using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -40,21 +41,21 @@ namespace Businness.Concrete
         [CacheAspect]
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(),Messages.RentalListSuccess);
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalListSuccess);
         }
 
         [PerformanceAspect(5)]
         [CacheAspect]
         public IDataResult<Rental> GetById(int id)
         {
-            return new SuccessDataResult<Rental>(_rentalDal.GetById(x=>x.Id == id),Messages.RentalListByIdSuccess);
+            return new SuccessDataResult<Rental>(_rentalDal.GetById(x => x.Id == id), Messages.RentalListByIdSuccess);
         }
 
         [PerformanceAspect(5)]
         [CacheAspect]
         public IDataResult<List<RentalDetailDto>> GetRentalDetails()
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(),Messages.RentalDetailsListed);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.RentalDetailsListed);
         }
 
         [ValidationAspect(typeof(RentalValidator))]
@@ -62,8 +63,13 @@ namespace Businness.Concrete
         [PerformanceAspect(5)]
         public IResult Insert(Rental rental)
         {
-                _rentalDal.Add(rental);
-                return new SuccessResult(Messages.RentalAddedSuccess);
+            var rentDate = BusinessRules.Run(CheckRentDate(rental));
+            if (rentDate != null)
+            {
+                return rentDate;
+            }
+            _rentalDal.Add(rental);
+            return new SuccessResult(Messages.RentalAddedSuccess);
         }
 
         [ValidationAspect(typeof(RentalValidator))]
@@ -72,6 +78,20 @@ namespace Businness.Concrete
         {
             _rentalDal.Delete(rental);
             return new SuccessResult(Messages.RentalUpdatedSuccess);
+        }
+        private IResult CheckRentDate(Rental rental)
+        {
+            var result = _rentalDal.GetAll(x => x.CarId == rental.CarId 
+                                        && x.ReturnDate >= rental.ReturnDate 
+                                        && x.RentDate <= rental.RentDate).Any();
+            if (result)
+            {
+                return new ErrorResult("This car is rented between these dates");
+            }
+            else
+            {
+                return new SuccessResult();
+            }
         }
     }
 }
