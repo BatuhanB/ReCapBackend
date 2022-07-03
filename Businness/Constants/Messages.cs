@@ -21,7 +21,7 @@ namespace Businness.Constants
         public static string CarListByBrandSuccess = "Car listing by brand has been successful";
         public static string CarListByColorSuccess = "Car listing by color has been successful";
         public static string CarListByIdSuccess = "Car listing by car id has been successful";
-        internal static string CarBrandAndColorSuccess = "Car listing by brand id and color id has been successfull";
+        public static string CarBrandAndColorSuccess = "Car listing by brand id and color id has been successfull";
 
         //BrandManager messages
         public static string BrandAddedSuccess = "Brand add has been successful";
@@ -79,13 +79,18 @@ namespace Businness.Constants
         public static string CarImageLimit = "Car image is over 5 ";
 
         public static string AuthorizationDenied = "Invalid authorization detected!";
-        internal static string UserAlreadyExists = "User is already exists!";
-        internal static string UserNotFound = "User not found!";
-        internal static string WrongPassword = "User password is not correct!";
-        internal static string SuccessLogin = "User has been logged in successfully!";
-        internal static string TokenCreated = "Token has been created successfully!";
-        internal static string SuccessUserRegister = "User has been registered successfully!";
-        internal static string RentalDetailsListed = "Rental details has been listed successfully!";
-        
+        public static string UserAlreadyExists = "User is already exists!";
+        public static string UserNotFound = "User not found!";
+        public static string WrongPassword = "User password is not correct!";
+        public static string SuccessLogin = "User has been logged in successfully!";
+        public static string TokenCreated = "Token has been created successfully!";
+        public static string SuccessUserRegister = "User has been registered successfully!";
+        public static string RentalDetailsListed = "Rental details has been listed successfully!";
+
+        //CartitemManager messages
+        public static string CartItemDeleted = "Car item deleted has been successfully";
+        public static string CartItemInserted = "Car item inserted has been successfully";
+        public static string CartItemUpdated = "Car item updated has been successfully";
+        public static string CartItemListed = "Car item listed has been successfully";
     }
 }

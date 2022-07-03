@@ -35,6 +35,8 @@ namespace Businness.DependencyResolvers.Autofac
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
+            builder.RegisterType<EfCartItemDal>().As<ICartItemDal>().SingleInstance();
+            builder.RegisterType<CartItemManager>().As<ICartItemService>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
