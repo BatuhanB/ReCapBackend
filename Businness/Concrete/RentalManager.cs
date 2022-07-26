@@ -81,9 +81,13 @@ namespace Businness.Concrete
         }
         private IResult CheckRentDate(Rental rental)
         {
-            var result = _rentalDal.GetAll(x => x.CarId == rental.CarId 
-                                        && x.ReturnDate >= rental.ReturnDate 
-                                        && x.RentDate <= rental.RentDate).Any();
+            var result = _rentalDal.GetAll(x => x.CarId == rental.CarId
+                                        && (x.RentDate == rental.RentDate 
+                                        || (x.RentDate < rental.RentDate 
+                                        && (x.ReturnDate == null 
+                                        || ((DateTime)x.ReturnDate).Date > rental.RentDate)))).Any();
+
+            Console.WriteLine(result);
             if (result)
             {
                 return new ErrorResult("This car is rented between these dates");
