@@ -39,6 +39,7 @@ namespace WebAPI
         {
             services.AddCors();
             services.AddControllers();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();//keep making changes on your code while application compiling
             //services.AddSingleton<ICarService, CarManager>();//Car controller injection chains
             //services.AddSingleton<ICarDal, EfCarDal>();
             //services.AddSingleton<IBrandService, BrandManager>();//Brand controller injection chains
@@ -86,6 +87,8 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
+
+            app.ConfigureCustomExceptionMiddleware();
 
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 

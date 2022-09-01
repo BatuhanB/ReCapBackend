@@ -16,7 +16,7 @@ namespace Core.Utilities.Results.Concrete
         public DataResult(T data, bool isSuccess) : base(isSuccess)
         {
             Data = data;
-        }
+        }   
 
         public T Data { get; }
     }
