@@ -16,7 +16,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public List<CarDetailsDto> GetCarDetails(Expression<Func<CarDetailsDto, bool>> filter = null)
         {
-            using Context context = new Context();
+            using var context = new Context();
             var result = from c in context.Cars
                          join b in context.Brands on c.BrandId equals b.Id
                          join co in context.Colors on c.ColorId equals co.Id
@@ -37,7 +37,7 @@ namespace DataAccess.Concrete.EntityFramework
         }
         public List<CarDetailsDto> GetCarDetail(Expression<Func<CarDetailsDto, bool>> filter = null)
         {
-            using Context context = new Context();
+            using var context = new Context();
             var result = from c in context.Cars
                          join b in context.Brands on c.BrandId equals b.Id
                          join co in context.Colors on c.ColorId equals co.Id
@@ -56,5 +56,6 @@ namespace DataAccess.Concrete.EntityFramework
                          };
             return result.ToList();
         }
+
     }
 }

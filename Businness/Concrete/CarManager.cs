@@ -29,7 +29,7 @@ namespace Businness.Concrete
 
         [PerformanceAspect(5)]
         [CacheRemoveAspect("ICarService.Get")]
-        [SecuredOperation("car.add,admin")]
+        //[SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Insert(Car car)
         {
@@ -48,7 +48,7 @@ namespace Businness.Concrete
         [PerformanceAspect(5)]
         public IDataResult<List<CarDetailsDto>> GetCarsByBrandId(int id)
         {
-            List<CarDetailsDto> carDetail = _carDal.GetCarDetails(x => x.BrandId == id);
+            var carDetail = _carDal.GetCarDetails(x => x.BrandId == id);
             if (carDetail == null)
             {
                 return new ErrorDataResult<List<CarDetailsDto>>("");
@@ -63,7 +63,7 @@ namespace Businness.Concrete
         [PerformanceAspect(5)]
         public IDataResult<List<CarDetailsDto>> GetCarsByColorId(int id)
         {
-            List<CarDetailsDto> carDetail = _carDal.GetCarDetails(x => x.ColorId == id);
+            var carDetail = _carDal.GetCarDetails(x => x.ColorId == id);
             if (carDetail == null)
             {
                 return new ErrorDataResult<List<CarDetailsDto>>("");
@@ -100,6 +100,7 @@ namespace Businness.Concrete
             return new SuccessResult(Messages.CarDeletedSuccess);
         }
 
+
         [PerformanceAspect(5)]
         [CacheAspect]
         public IDataResult<List<CarDetailsDto>> GetCarDetails(int id)
@@ -114,7 +115,7 @@ namespace Businness.Concrete
 
         public IDataResult<List<CarDetailsDto>> GetCarByColorIdAndBrandId(int colorId, int brandId)
         {
-            List<CarDetailsDto> carDetails = _carDal.GetCarDetails(x => x.ColorId == colorId && x.BrandId == brandId);
+            var carDetails = _carDal.GetCarDetails(x => x.ColorId == colorId && x.BrandId == brandId);
             if (carDetails == null)
             {
                 return new  ErrorDataResult<List<CarDetailsDto>>("There is no car found for the values you entered ");
@@ -124,5 +125,6 @@ namespace Businness.Concrete
                 return new SuccessDataResult<List<CarDetailsDto>>(carDetails, Messages.CarBrandAndColorSuccess);
             }
         }
+        
     }
 }

@@ -57,7 +57,7 @@ namespace Businness.Concrete
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Insert(Brand brand)
         {
-            IResult result = BusinessRules.Run(CheckIfBrandNameExists(brand.Name));
+            var result = BusinessRules.Run(CheckIfBrandNameExists(brand.Name));
             if (result != null)
             {
                 return result;
@@ -71,7 +71,7 @@ namespace Businness.Concrete
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
         {
-            IResult result = BusinessRules.Run(CheckIfBrandNameExists(brand.Name));
+            var result = BusinessRules.Run(CheckIfBrandNameExists(brand.Name));
             if (result != null)
             {
                 return result;

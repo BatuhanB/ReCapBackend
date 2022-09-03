@@ -15,7 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public List<RentalDetailDto> GetRentalDetails()
         {
-             using Context context = new Context();
+             using var context = new Context();
             var result = from ren in context.Rentals
                          join us in context.Users
                          on ren.CustomerId equals us.Id

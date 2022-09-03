@@ -35,7 +35,7 @@ namespace Businness.Concrete
         [PerformanceAspect(5)]
         public IResult Add(IFormFile file, CarImage carImage)
         {
-            IResult result = BusinessRules.Run(CheckImageCount(carImage.CarId));
+            var result = BusinessRules.Run(CheckImageCount(carImage.CarId));
             if (result != null)
             {
                 return result;

@@ -87,7 +87,7 @@ namespace Core.Utilities.Helpers.FileHelper.Concrete
         }
         private static void CreateImageFile(string fileDirectory, IFormFile file)
         {
-            using FileStream fileStream = File.Create(fileDirectory);
+            using var fileStream = File.Create(fileDirectory);
             file.CopyTo(fileStream);
             fileStream.Flush();
         }

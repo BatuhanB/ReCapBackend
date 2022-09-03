@@ -63,7 +63,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Update(Car car)
         {
-            Car carUpdate = _cars.FirstOrDefault(x => x.Id == car.Id);
+            var carUpdate = _cars.FirstOrDefault(x => x.Id == car.Id);
             carUpdate.BrandId = car.BrandId;
             carUpdate.ModelYear = car.ModelYear;
             carUpdate.Description = car.Description;

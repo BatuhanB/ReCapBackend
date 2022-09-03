@@ -26,7 +26,7 @@ namespace ConsoleUI
 
         private static void RentalListTest()
         {
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var rentalManager = new RentalManager(new EfRentalDal());
             var result = rentalManager.GetAll();
             foreach (var item in result.Data)
             {
@@ -40,8 +40,8 @@ namespace ConsoleUI
 
         private static void RentalAddTest()
         {
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            Rental rental = new Rental()
+            var rentalManager = new RentalManager(new EfRentalDal());
+            var rental = new Rental()
             {
                 CarId = 1,
                 CustomerId = 2,
@@ -54,7 +54,7 @@ namespace ConsoleUI
 
         private static void CustomerListTest()
         {
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var customerManager = new CustomerManager(new EfCustomerDal());
             var result = customerManager.GetAll();
             foreach (var item in result.Data)
             {
@@ -64,8 +64,8 @@ namespace ConsoleUI
 
         private static void CustomerAddTest()
         {
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            Customer customer = new Customer()
+            var customerManager = new CustomerManager(new EfCustomerDal());
+            var customer = new Customer()
             {
                 CompanyName = "BBCorp"
             };
@@ -74,7 +74,7 @@ namespace ConsoleUI
 
         private static void UserListTest()
         {
-            UserManager userManager = new UserManager(new EfUserDal());
+            var userManager = new UserManager(new EfUserDal());
             var result = userManager.GetAll();
             foreach (var item in result.Data)
             {
@@ -89,8 +89,8 @@ namespace ConsoleUI
 
         private static void UserAddTest()
         {
-            UserManager userManager = new UserManager(new EfUserDal());
-            User user1 = new User()
+            var userManager = new UserManager(new EfUserDal());
+            var user1 = new User()
             {
                 FirstName = "Batuhan",
                 LastName = "Balı",
@@ -102,8 +102,8 @@ namespace ConsoleUI
 
         private static void ColorAddTest()
         {
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-            Color color1 = new Color()
+            var colorManager = new ColorManager(new EfColorDal());
+            var color1 = new Color()
             {
                 Name = "Beyaz"
             };
@@ -112,7 +112,7 @@ namespace ConsoleUI
 
         private static void ColorListTest()
         {
-            ColorManager colorManager = new ColorManager(new EfColorDal());
+            var colorManager = new ColorManager(new EfColorDal());
             var result = colorManager.GetAll();
             if (result.IsSuccess == true)
             {
@@ -125,8 +125,8 @@ namespace ConsoleUI
 
         private static void BrandAddTest()
         {
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            Brand brand1 = new Brand()
+            var brandManager = new BrandManager(new EfBrandDal());
+            var brand1 = new Brand()
             {
                 Name = "320i"
             };
@@ -135,7 +135,7 @@ namespace ConsoleUI
 
         private static void BrandListTest()
         {
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            var brandManager = new BrandManager(new EfBrandDal());
             var result = brandManager.GetAll();
             if (result.IsSuccess == true)
             {
@@ -148,7 +148,7 @@ namespace ConsoleUI
 
         private static void CarListTest()
         {
-            CarManager carManager = new CarManager(new EfCarDal());
+            var carManager = new CarManager(new EfCarDal());
             var result = carManager.GetCarDetail();
             if (result.IsSuccess == true)
             {
@@ -161,8 +161,8 @@ namespace ConsoleUI
 
         private static void CarAddTest()
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            Car car1 = new Car();
+            var carManager = new CarManager(new EfCarDal());
+            var car1 = new Car();
 
             car1.CarName = "BMW";
             car1.BrandId = 2;
